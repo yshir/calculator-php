@@ -1,5 +1,6 @@
 <?php
 
+require_once("evaluator.php");
 require_once("lexer.php");
 require_once("parser.php");
 
@@ -19,7 +20,11 @@ function main()
 
         $parser = new Parser();
         $ast = $parser->parse($tokens);
-        print_r($ast);
+        // print_r($ast);
+
+        $evaluator = new Evaluator();
+        $result = $evaluator->eval($ast);
+        echo $result.PHP_EOL;
     }
 }
 
