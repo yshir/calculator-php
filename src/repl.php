@@ -1,6 +1,7 @@
 <?php
 
 require_once("lexer.php");
+require_once("parser.php");
 
 function main()
 {
@@ -14,7 +15,11 @@ function main()
 
         $lexer = new Lexer();
         $tokens = $lexer->lex($stdin);
-        print_r($tokens).PHP_EOL;
+        // print_r($tokens);
+
+        $parser = new Parser();
+        $ast = $parser->parse($tokens);
+        print_r($ast);
     }
 }
 
